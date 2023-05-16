@@ -1,0 +1,33 @@
+version: '3.2'
+services: 
+  mongo:
+    image: mongo
+    restart: always
+    env_file: .env      
+    ports:
+      - "27017:27017"
+    volumes: 
+      - 'db_volume:/data/db'
+
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - 9000:8081
+    env_file: .env      
+  api:
+    build: .
+    depends_on:
+      - mongo
+    env_file: .env
+    ports:
+      - '3031:3031'
+    command: npm run dev
+    volumes:
+      - .:/api/
+      -  /api/node_modules
+volumes:
+  db_volume:
+    driver: local

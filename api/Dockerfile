@@ -3,7 +3,7 @@ FROM node:14
 WORKDIR /api
 
 COPY package.json .
-COPY package-lock.json .
+# COPY package-lock.json .
 
 RUN npm install
 

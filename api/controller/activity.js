@@ -12,7 +12,6 @@ activityRoute.get('/sync', async (req, res) => {
             activity: data
         })
     } catch (error) {
-        console.log(error)
         res.status(500).send({
             error
         })
@@ -23,14 +22,12 @@ activityRoute.get('/sync', async (req, res) => {
 activityRoute.get('/', async (req, res) => {
     try {
         const {query} = req;
-        console.log(query)
         const {data, count} = await getActivities(query)
         res.status(200).send({
             activity: data,
             count
         })
     } catch (error) {
-        console.log({error})
         res.status(500).send({
             error
         })

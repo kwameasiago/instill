@@ -5,9 +5,9 @@ import './Lists.css';
 const Lists = ({ list }) => {
     return (
         <Fragment>
-            {list.map(data => {
+            {list.map((data, index) => {
                 return (
-                    <ListItem data={data} />
+                    <ListItem data={data} key={index}/>
                 )
             })}
         </Fragment>

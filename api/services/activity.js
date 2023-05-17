@@ -27,9 +27,9 @@ class Activity {
             let count;
             if(param.length > 0){
                 let whereClause = param.map(key => ({
-                    [`${key}`]: key==='price'? {$lt : parseFloat(query[`${key}`])}:query[`${key}`]
+                    [`${key}`]: key==='price'? {$lt : parseFloat(query[`${key}`])}: key==='activity'? { $regex: query['activity'], $options: "i" } :query[`${key}`]
                 }))
-                console.log({whereClause})
+                console.log(whereClause)
                 result = await  activityModel.find({$and:whereClause}).skip(query.offset).limit(10);
                 count = await  activityModel.count({$and:whereClause});
             }

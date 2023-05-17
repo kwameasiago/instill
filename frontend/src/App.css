@@ -1,0 +1,38 @@
+.container {
+  /* margin: 0em 5em 0em 0em; */
+  display: flex;
+  flex-direction: row;
+}
+
+.left-pane{
+  width: 80%;
+  height: 100vh;
+  background-color:#fff
+}
+
+.right-pane{
+  width: 20%;
+  height: 100vh;
+  background-color:beige
+}
+
+@media only screen and (max-width: 425px) {
+  .container {
+    /* margin: 0em 5em 0em 0em; */
+    display: flex;
+    flex-direction: column;
+  }
+  .left-pane{
+    width: 100%;
+    height: auto;
+    background-color:#fff
+  }
+  
+  .right-pane{
+    width: 100%;
+    height: 300px;
+    margin-top: 2em;
+    background-color:beige
+  }
+  
+}

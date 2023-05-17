@@ -1,0 +1,36 @@
+.form-control {
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label {
+    margin: 10px 10px 10px 10px;
+}
+
+.form-control input[type=text],
+.form-control input[type=number] {
+    height: 30px;
+    border-radius: 10px;
+    background: transparent;
+    margin: 5px 10px 5px 10px;
+}
+
+.form-control button {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    
+    margin: 1em 0em 1em 1em;
+}
+
+.form-control button:nth-child(1) {
+    background-color: #4C4C6D;
+    color: #E8F6EF;
+}
+
+
+.form-control button:nth-child(2) {
+    background-color: #D21312;
+    color: #E8F6EF;
+}

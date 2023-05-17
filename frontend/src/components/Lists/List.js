@@ -1,16 +1,15 @@
 import { Fragment } from "react";
 import ListItem from "../ListItem/ListItem";
+import './Lists.css';
 
-
-const Lists = ({data}) => {
-    console.log(data)
+const Lists = ({ list }) => {
     return (
         <Fragment>
-                {data.map(d => {
-                    return (
-                            <ListItem />
-                    )
-                })}
+            {list.map(data => {
+                return (
+                    <ListItem data={data} />
+                )
+            })}
         </Fragment>
     )
 }

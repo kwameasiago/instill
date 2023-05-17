@@ -2,11 +2,13 @@ import express from 'express';
 import bodyparser from 'body-parser';
 import connection from './config/db.js';
 import activityRoute from './controller/activity.js';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 3000;
 connection();
 
+app.use(cors())
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use('/activity', activityRoute)

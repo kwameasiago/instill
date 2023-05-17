@@ -5,23 +5,25 @@ const Filter = ({
     handleSubmit,
     handleOnChange,
     onSync,
-    resetFilter
+    resetFilter,
+    loader,
+    params:{price, type, participants}
 }) => {
     return (
         <Fragment>
             <form className="form-control" onSubmit={handleSubmit}>
 
 
-                <input name="price" type="number" placeholder="Max price" onChange={handleOnChange('price')} />
+                <input name="Price" type="number" value={price || ''} placeholder="Max price" onChange={handleOnChange('price')} />
 
-                <input name="price" type="text" placeholder="Type" onChange={handleOnChange('price')} />
+                <input name="Type" type="text" value={type || ''} placeholder="Type" onChange={handleOnChange('type')} />
 
 
-                <input name="price" type="number" placeholder="Participants" onChange={handleOnChange('price')} />
+                <input name="Participants" type="number"  value={participants || ''}placeholder="Participants" onChange={handleOnChange('participants')} />
                 <div className="btn">
-                    <button type="submit" onSubmit={handleSubmit}>Filter</button>
-                    <button type="submit" onSubmit={resetFilter}>Reset filter</button>
-                    <button type="submit" onSubmit={onSync}>Sync</button>
+                  
+                    <button  onClick={(e) => {e.preventDefault(); resetFilter();}}>Reset filter</button>
+                    <button onClick={(e) => {e.preventDefault(); onSync();}} disabled={loader}>{loader?'Loading ...':'Sync'}</button>
 
                 </div>
             </form>

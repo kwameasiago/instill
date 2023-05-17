@@ -9,7 +9,6 @@ activityRoute.get('/sync', async (req, res) => {
         const data = await syncApiActivities();
         
         res.status(200).send({
-            hello: 'Testing routes',
             activity: data
         })
     } catch (error) {
@@ -25,10 +24,10 @@ activityRoute.get('/', async (req, res) => {
     try {
         const {query} = req;
         console.log(query)
-        const data = await getActivities(query)
+        const {data, count} = await getActivities(query)
         res.status(200).send({
-            hello: 'testing route',
-            activity: data
+            activity: data,
+            count
         })
     } catch (error) {
         console.log({error})

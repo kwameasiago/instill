@@ -1,20 +1,7 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { Fragment } from "react"
 import './ListItem.css'
 
-const ListItem = () => {
-    const data = {
-        _id: "6463f6b74b35eeeaba54e9c8",
-        activity: "Resolve a problem you've been putting off",
-        type: "busywork",
-        participants: 1,
-        price: 0,
-        link: "",
-        key: "9999999",
-        accessibility: 0,
-        __v: 0
-    };
-
+const ListItem = ({data}) => {
     return (
         <Fragment>
             <div className="list-item-container">
@@ -52,8 +39,8 @@ const ListItem = () => {
                                     Link
                                 </div>
                                 <div className="chip-right">
-                                    {data.link === '' ? 'Na' : (
-                                        <a href={data.link}>More</a>
+                                    {data.link === '' ? <i>&#128196;</i> : (
+                                        <a href={data.link}>&#128279;</a>
                                     )}
                                 </div>
 

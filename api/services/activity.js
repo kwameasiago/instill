@@ -22,18 +22,22 @@ class Activity {
 
     async getActivities(query){
         try {
-            let result
-            if(Object.keys(query).length > 0){
-                let whereClause = Object.keys(query).map(key => ({
-                    [`${key}`]: key==='price'? {$lt : parseFloat(query[`${key}`])}:query[`${key}`]
+            let param = Object.keys(query).filter(s => s != 'offset')
+            let result;
+            let count;
+            if(param.length > 0){
+                let whereClause = param.map(key => ({
+                    [`${key}`]: key==='price'? {$lt : parseFloat(query[`${key}`])}: key==='activity'? { $regex: query['activity'], $options: "i" } :query[`${key}`]
                 }))
                 console.log(whereClause)
-                result = await  activityModel.find({$and:whereClause});
+                result = await  activityModel.find({$and:whereClause}).skip(query.offset).limit(10);
+                count = await  activityModel.count({$and:whereClause});
             }
             else{
-                result = await  activityModel.find();
+                result = await  activityModel.find().skip(query.offset).limit(10); 
+                count = await  activityModel.count();
             }
-            return result
+            return {data:result, count}
         } catch (error) {
             throw error
         }

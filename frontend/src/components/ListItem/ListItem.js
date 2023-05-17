@@ -24,40 +24,40 @@ const ListItem = () => {
                     </div>
                     <div className="content">
                         <div>
-                        <h1>{data.type}</h1>
-                        <p>{data.activity}</p>
+                            <h1>{data.type}</h1>
+                            <p>{data.activity}</p>
                         </div>
                         <div className="chip">
-                        <div className="chip-container">
-                            <div className="chip-left">
-                            participants
-                            </div>
-                            <div className="chip-right">
-                                {data.participants}
-                            </div>
-                            
-                        </div>
+                            <div className="chip-container">
+                                <div className="chip-left">
+                                    participants
+                                </div>
+                                <div className="chip-right">
+                                    {data.participants}
+                                </div>
 
-                        <div className="chip-container">
-                            <div className="chip-left">
-                                price
                             </div>
-                            <div className="chip-right">
-                                {data.price}
+
+                            <div className="chip-container">
+                                <div className="chip-left">
+                                    price
+                                </div>
+                                <div className="chip-right">
+                                    {data.price}
+                                </div>
+
                             </div>
-                            
-                        </div>
-                        <div className="chip-container">
-                            <div className="chip-left">
-                                Link
+                            <div className="chip-container">
+                                <div className="chip-left">
+                                    Link
+                                </div>
+                                <div className="chip-right">
+                                    {data.link === '' ? 'Na' : (
+                                        <a href={data.link}>More</a>
+                                    )}
+                                </div>
+
                             </div>
-                            <div className="chip-right">
-                                {data.link === ''? 'Na': (
-                                    <a href={data.link}>More</a>
-                                )}
-                            </div>
-                            
-                        </div>
                         </div>
                     </div>
                 </div>

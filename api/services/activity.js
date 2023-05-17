@@ -7,7 +7,6 @@ class Activity {
             let arr = [...Array(21).keys()].slice(1).map(async () => {
                 const response = await fetch("https://boredapi.com/api/activity");
                 const newActivity = await response.json();
-                console.log(newActivity)
                 const data = await activityModel.insertMany(newActivity);
                 return data
             })
@@ -29,12 +28,11 @@ class Activity {
                 let whereClause = param.map(key => ({
                     [`${key}`]: key==='price'? {$lt : parseFloat(query[`${key}`])}: key==='activity'? { $regex: query['activity'], $options: "i" } :query[`${key}`]
                 }))
-                console.log(whereClause)
                 result = await  activityModel.find({$and:whereClause}).skip(query.offset).limit(10);
                 count = await  activityModel.count({$and:whereClause});
             }
             else{
-                result = await  activityModel.find().skip(query.offset).limit(10); 
+                result = await  activityModel.find().skip(query.offset || 0).limit(10); 
                 count = await  activityModel.count();
             }
             return {data:result, count}

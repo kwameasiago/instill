@@ -91,24 +91,22 @@ function App() {
         setParams({
           ...paramObj,
           offset: 0
-        })
-        getAcivity(params)
+        });
+        getAcivity(params);
       }else{
         setParams({
           ...params,
           [`${name}`]: value,
           offset: 0
-        })
-        console.log(`updating  ${name} with value ${value}`)
+        });
       }
     }else{
       if(value !== ''){
-        console.log(`new add ${name} with value ${value}`)
         setParams({
           ...params,
           [`${name}`]: value,
           offset: 0
-        })
+        });
       }
       
     }
